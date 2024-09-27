@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-
-
 # Neovim Configuration
 
 This repository contains my custom Neovim configuration, built with Lua and utilizing the Lazy plugin manager. The setup includes various plugins for autocompletion, LSP, Git integration, UI enhancements, and more. It's designed to work across Linux, macOS, and Windows.
@@ -95,7 +92,3 @@ This repository contains my custom Neovim configuration, built with Lua and util
 This project is licensed under the MIT License.
 
 
-=======
-# nvim-config
-nvim-config
->>>>>>> origin/main
