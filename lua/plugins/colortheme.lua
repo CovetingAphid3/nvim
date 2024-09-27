@@ -1,4 +1,5 @@
 return {
+
 	-- {
 	-- 	"folke/tokyonight.nvim",
 	-- 	lazy = false,
@@ -23,17 +24,36 @@ return {
 		lazy = false,
 		priority = 1000,
 		opts = {
-            styles = {
-                transparency = true,
-            },
-            groups = {
-                error ="#ff0000"
-            },
-        },
+	           styles = {
+	               transparency = true,
+	           },
+	           groups = {
+	               error ="#ff0000"
+	           },
+	       },
 		config = function(_, opts)
-            require("rose-pine").setup(opts)
-            vim.cmd("colorscheme rose-pine")
+	           require("rose-pine").setup(opts)
+	           vim.cmd("colorscheme rose-pine")
 
-        end,
+	       end,
 	},
+    {
+		"jnurmine/Zenburn",
+	},
+	{
+		"RRethy/base16-nvim",
+	},
+	-- {
+	-- 	"catppuccin/nvim",
+	-- 	name = "catppuccin",
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	opts = {
+ --            transparent_background = true,
+ --        },
+	-- 	config = function(_, opts)
+	-- 		require("catppuccin").setup(opts)
+	-- 		vim.cmd("colorscheme catppuccin")
+	-- 	end,
+	-- },
 }

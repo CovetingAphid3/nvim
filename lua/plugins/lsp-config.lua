@@ -31,6 +31,9 @@ return {
             lspconfig.pyright.setup({
                 capabilities = capabilities,
             })
+            lspconfig.jdtls.setup({
+                capabilities = capabilities,
+            })
             lspconfig.gopls.setup {
                 capabilities = capabilities,
                 cmd = { "gopls" },
@@ -50,7 +53,8 @@ return {
             lspconfig.lua_ls.setup({
                 capabilities = capabilities,
             })
-            lspconfig.tsserver.setup({
+
+            lspconfig.ts_ls.setup({
                 capabilities = capabilities,
             })
             lspconfig.html.setup({
