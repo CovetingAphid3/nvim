@@ -1,4 +1,15 @@
 return {
+	{
+		"rebelot/kanagawa.nvim",
+		name = "kanagawa",
+		lazy = false,
+		priority = 1000,
+		opts = {},
+		config = function(_, opts)
+			require("kanagawa").setup(opts)
+			vim.cmd("colorscheme kanagawa")
+		end,
+	},
 
 	-- {
 	-- 	"folke/tokyonight.nvim",
@@ -17,27 +28,27 @@ return {
 	-- 		vim.cmd("colorscheme tokyonight")
 	-- 	end,
 	-- },
+	-- {
+	-- 	--rose-pine
+	-- 	"rose-pine/neovim",
+	-- 	name = "rose-pine",
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	opts = {
+	--            styles = {
+	--                transparency = true,
+	--            },
+	--            groups = {
+	--                error ="#ff0000"
+	--            },
+	--        },
+	-- 	config = function(_, opts)
+	--            require("rose-pine").setup(opts)
+	--            vim.cmd("colorscheme rose-pine")
+	--
+	--        end,
+	-- },
 	{
-		--rose-pine
-		"rose-pine/neovim",
-		name = "rose-pine",
-		lazy = false,
-		priority = 1000,
-		opts = {
-	           styles = {
-	               transparency = true,
-	           },
-	           groups = {
-	               error ="#ff0000"
-	           },
-	       },
-		config = function(_, opts)
-	           require("rose-pine").setup(opts)
-	           vim.cmd("colorscheme rose-pine")
-
-	       end,
-	},
-    {
 		"jnurmine/Zenburn",
 	},
 	{
@@ -49,8 +60,8 @@ return {
 	-- 	lazy = false,
 	-- 	priority = 1000,
 	-- 	opts = {
- --            transparent_background = true,
- --        },
+	--            transparent_background = true,
+	--        },
 	-- 	config = function(_, opts)
 	-- 		require("catppuccin").setup(opts)
 	-- 		vim.cmd("colorscheme catppuccin")
