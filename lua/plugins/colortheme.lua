@@ -1,15 +1,25 @@
 return {
-	{
-		"rebelot/kanagawa.nvim",
-		name = "kanagawa",
-		lazy = false,
-		priority = 1000,
-		opts = {},
-		config = function(_, opts)
-			require("kanagawa").setup(opts)
-			vim.cmd("colorscheme kanagawa")
-		end,
-	},
+	-- {
+	-- 	"sho-87/kanagawa-paper.nvim",
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	opts = {},
+	-- 	config = function(_, opts)
+	-- 		require("kanagawa-paper").setup(opts)
+	-- 		vim.cmd("colorscheme kanagawa-paper")
+	-- 	end,
+	-- },
+	-- {
+	-- 	"rebelot/kanagawa.nvim",
+	-- 	name = "kanagawa",
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	opts = {},
+	-- 	config = function(_, opts)
+	-- 		require("kanagawa").setup(opts)
+	-- 		vim.cmd("colorscheme kanagawa")
+	-- 	end,
+	-- },
 
 	-- {
 	-- 	"folke/tokyonight.nvim",
@@ -28,31 +38,25 @@ return {
 	-- 		vim.cmd("colorscheme tokyonight")
 	-- 	end,
 	-- },
-	-- {
-	-- 	--rose-pine
-	-- 	"rose-pine/neovim",
-	-- 	name = "rose-pine",
-	-- 	lazy = false,
-	-- 	priority = 1000,
-	-- 	opts = {
-	--            styles = {
-	--                transparency = true,
-	--            },
-	--            groups = {
-	--                error ="#ff0000"
-	--            },
-	--        },
-	-- 	config = function(_, opts)
-	--            require("rose-pine").setup(opts)
-	--            vim.cmd("colorscheme rose-pine")
-	--
-	--        end,
-	-- },
 	{
-		"jnurmine/Zenburn",
-	},
-	{
-		"RRethy/base16-nvim",
+		--rose-pine
+		"rose-pine/neovim",
+		name = "rose-pine",
+		lazy = false,
+		priority = 1000,
+		opts = {
+	           styles = {
+	               transparency = true,
+	           },
+	           groups = {
+	               error ="#ff0000"
+	           },
+	       },
+		config = function(_, opts)
+	           require("rose-pine").setup(opts)
+	           vim.cmd("colorscheme rose-pine")
+
+	       end,
 	},
 	-- {
 	-- 	"catppuccin/nvim",
