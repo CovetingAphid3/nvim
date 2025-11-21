@@ -39,5 +39,5 @@ return {
 		},
 		keys = { { "<leader>z", "<cmd>ZenMode<cr>", desc = "Zen Mode" } },
 	},
-{ "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
+-- { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
 }
