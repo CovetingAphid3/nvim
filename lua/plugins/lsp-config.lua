@@ -23,94 +23,44 @@ return {
         "neovim/nvim-lspconfig",
         lazy = false,
         config = function()
+            vim.diagnostic.config({
+                virtual_text = true,
+            })
+
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-            local lspconfig = require("lspconfig")
-            local util = require "lspconfig/util"
-
-            lspconfig.pyright.setup({
-                capabilities = capabilities,
-            })
-            lspconfig.jdtls.setup({
-                capabilities = capabilities,
-            })
-            lspconfig.gopls.setup {
-                capabilities = capabilities,
-                cmd = { "gopls" },
-                filetypes = { "go", "gomod", "gowork", "gotmpl" },
-                root_dir = util.root_pattern("go.work", "go.mod", ".git"),
-                settings = {
-                    gopls = {
-                        completeUnimported = true,
-                        usePlaceholders = true,
-                        analyses = {
-                            unusedparams = true,
-                        },
-                    },
-                },
-            }
-
-            lspconfig.lua_ls.setup({
-                capabilities = capabilities,
+            -- Manually configure each server with vim.lsp.start
+            -- These will be automatically managed by mason-lspconfig
+            vim.api.nvim_create_autocmd("LspAttach", {
+                callback = function(args)
+                    local client = vim.lsp.get_client_by_id(args.data.client_id)
+                    if client then
+                        -- Set up keymaps when LSP attaches
+                        vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = args.buf })
+                        vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { buffer = args.buf })
+                        vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, { buffer = args.buf })
+                        vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = args.buf })
+                    end
+                end,
             })
 
-            lspconfig.ts_ls.setup({
-                capabilities = capabilities,
-            })
-            lspconfig.html.setup({
-                capabilities = capabilities,
-            })
-            -- C++ (clangd)
-            lspconfig.clangd.setup({
-                capabilities = capabilities,
-            })
-
-
-            lspconfig.intelephense.setup({
-                capabilities = capabilities,
-            })
-
-            lspconfig.emmet_language_server.setup({
-                filetypes = {
-                    "css",
-                    "eruby",
-                    "html",
-                    "javascript",
-                    "javascriptreact",
-                    "less",
-                    "sass",
-                    "scss",
-                    "pug",
-                    "typescriptreact",
-                },
-                -- Read more about this options in the [vscode docs](https://code.visualstudio.com/docs/editor/emmet#_emmet-configuration).
-                -- **Note:** only the options listed in the table are supported.
-                init_options = {
-                    ---@type table<string, string>
-                    includeLanguages = {},
-                    --- @type string[]
-                    excludeLanguages = {},
-                    --- @type string[]
-                    extensionsPath = {},
-                    --- @type table<string, any> [Emmet Docs](https://docs.emmet.io/customization/preferences/)
-                    preferences = {},
-                    --- @type boolean Defaults to `true`
-                    showAbbreviationSuggestions = true,
-                    --- @type "always" | "never" Defaults to `"always"`
-                    showExpandedAbbreviation = "always",
-                    --- @type boolean Defaults to `false`
-                    showSuggestionsAsSnippets = false,
-                    --- @type table<string, any> [Emmet Docs](https://docs.emmet.io/customization/syntax-profiles/)
-                    syntaxProfiles = {},
-                    --- @type table<string, string> [Emmet Docs](https://docs.emmet.io/customization/snippets/#variables)
-                    variables = {},
-                },
-            })
-
-            vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-            vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
-            vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
-            vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
+            -- Optional: Manual server configuration if needed
+            -- vim.lsp.start({
+            --     name = "gopls",
+            --     cmd = { "gopls" },
+            --     capabilities = capabilities,
+            --     filetypes = { "go", "gomod", "gowork", "gotmpl" },
+            --     root_dir = require("lspconfig.util").root_pattern("go.work", "go.mod", ".git"),
+            --     settings = {
+            --         gopls = {
+            --             completeUnimported = true,
+            --             usePlaceholders = true,
+            --             analyses = {
+            --                 unusedparams = true,
+            --             },
+            --         },
+            --     },
+            -- })
         end,
     },
 }
